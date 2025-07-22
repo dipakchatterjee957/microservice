@@ -1,0 +1,8 @@
+import express from 'express';
+import userController from '../controller/user.controller.js';
+import { validateToken } from '../utils/validateToken.js';
+const userRouter = express.Router();
+
+userRouter.get(`/getUserList`, validateToken, userController.getUserList);
+
+module.exports = userRouter;

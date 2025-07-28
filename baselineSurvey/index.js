@@ -1,6 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import cros from 'cors';
+import cors from 'cors';
 import baselineSurveyRouter from './src/router/baselineSurvey.router.js';
 
 dotenv.config();
@@ -10,7 +10,7 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cros())
+app.use(cors())
 
 app.use('/', baselineSurveyRouter);
 app.get('/', (req, res) => {

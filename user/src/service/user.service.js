@@ -1,5 +1,5 @@
 import userQuery from '../query/user.query.js';
-import connection from '../../../common_services/connection.js';
+import connection from '../../../common_services/mysql.controller.js';
 
 export default new class Userservice {
 

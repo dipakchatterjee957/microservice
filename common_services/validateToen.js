@@ -1,7 +1,6 @@
 import jwt from 'jsonwebtoken';
-import utils from './utils';
-import userQuery from '../user/src/query/user.query';
-import connection from './mysql.controller';
+import utils from './utils.js';
+import connection from './mysql.controller.js';
 
 const validateToken = async (req, res, next) => {
     let token =
@@ -29,7 +28,7 @@ const validateToken = async (req, res, next) => {
 }
 
 const checkUserAuthorization = async (user_master_id) => {
-    let uAuth = await connection.query(userQuery.CHECK_USER_AUTHENTICATION_QUERY
+    let uAuth = await connection.query("select * from user_master where job_status = 'W' and active_flag = 'A' and user_master_id = %user_master_id% ;"
         .replace('%user_master_id%', user_master_id))
     if (uAuth.response.length) return true;
     else return false;

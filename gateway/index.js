@@ -1,7 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import cros from 'cors';
-import createProxyMiddleware from 'http-proxy-middleware';
+import cors from 'cors';
+import { createProxyMiddleware } from 'http-proxy-middleware';
 
 dotenv.config();
 const PORT = process.env.PORT
@@ -10,7 +10,7 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cros())
+app.use(cors())
 
 // Route to User Service
 app.use('/user', createProxyMiddleware({ target: 'http://localhost:8081', changeOrigin: true }));

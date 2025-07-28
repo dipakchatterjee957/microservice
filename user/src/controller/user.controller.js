@@ -1,4 +1,4 @@
-import userService from '../service/user.service';
+import userService from '../service/user.service.js';
 import utils from '../../../common_services/utils.js';
 
 export default new class Usercontroller {

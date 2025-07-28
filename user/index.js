@@ -1,6 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import cros from 'cors';
+import cors from 'cors';
 import userRouter from './src/router/user.router.js';
 
 dotenv.config();
@@ -10,9 +10,9 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cros())
+app.use(cors())
 
-app.use('/', userRouter);
+app.use('/user', userRouter);
 app.get('/', (req, res) => {
     res.send('User Service');
 });

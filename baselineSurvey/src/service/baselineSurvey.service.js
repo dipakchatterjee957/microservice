@@ -1,5 +1,5 @@
 import baselineSurveyQuery from '../query/baselineSurvey.query.js';
-import connection from '../../../common_services/connection.js';
+import connection from '../../../common_services/mysql.controller.js';
 import utils from '../../../common_services/utils.js';
 
 export default new class BaselineSurveyservice {

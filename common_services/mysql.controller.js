@@ -149,4 +149,4 @@ class MySqlController {
 const dbInstance = new MySqlController()
 Object.freeze(dbInstance)
 
-module.exports = dbInstance
+export default dbInstance

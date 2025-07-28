@@ -1,6 +1,4 @@
-// const { response } = require("express")
-
-module.exports.sendResponse = (res, data, status, message = null) => {
+const sendResponse = (res, data, status, message = null) => {
     return res.status(200).send({
         status: status == true ? true : false,
         success: status == true ? 'Success' : 'Failure',
@@ -9,7 +7,7 @@ module.exports.sendResponse = (res, data, status, message = null) => {
     })
 }
 
-module.exports.getCurrentDateTime = () => {
+const getCurrentDateTime = () => {
     let now = new Date();
     let date = now.toISOString();
     let time = now.toTimeString();
@@ -17,25 +15,25 @@ module.exports.getCurrentDateTime = () => {
     return dateTime;
 }
 
-module.exports.catchAsync = (fn) => {
+const catchAsync = (fn) => {
     return (req, res, next) => {
         fn(req, res, next).catch(next);
     };
 }
 
-module.exports.convertToDateTime = (date) => {
+const convertToDateTime = (date) => {
     let now = new Date(date);
     let dateConvarted = now.toISOString().replace('T', ' ').split('.')[0];
     return date ? dateConvarted : null;
 }
 
-module.exports.convertToDate = (date) => {
+const convertToDate = (date) => {
     let now = new Date(date);
     let dateConvarted = now.toISOString().split('T')[0];
     return date ? dateConvarted : null;
 }
 
-module.exports.convertArrayDateField = (array, ...item) => {
+const convertArrayDateField = (array, ...item) => {
     array.forEach(i => {
         for (let x = 0; x < item.length; x++) {
             i[item[x]] = i[item[x]] ? this.convertToDate(i[item[x]]) : null;
@@ -43,7 +41,7 @@ module.exports.convertArrayDateField = (array, ...item) => {
     });
     // return array;
 }
-module.exports.convertArrayDateTimeField = (array, ...item) => {
+const convertArrayDateTimeField = (array, ...item) => {
     array.forEach(i => {
         for (let x = 0; x < item.length; x++) {
             i[item[x]] = i[item[x]] ? this.convertToDateTime(i[item[x]]) : null;
@@ -52,7 +50,7 @@ module.exports.convertArrayDateTimeField = (array, ...item) => {
     // return array;
 }
 
-module.exports.formatDateDDMMYYYY = (timestamp) => {
+const formatDateDDMMYYYY = (timestamp) => {
     const date = new Date(timestamp); // Convert timestamp to Date object
 
     const day = String(date.getDate()).padStart(2, '0'); // Get day and pad with 0 if needed
@@ -61,3 +59,14 @@ module.exports.formatDateDDMMYYYY = (timestamp) => {
 
     return `${day}-${month}-${year}`; // Return formatted date
 }
+
+export default {
+    sendResponse,
+    getCurrentDateTime,
+    catchAsync,
+    convertToDateTime,
+    convertToDate,
+    convertArrayDateField,
+    convertArrayDateTimeField,
+    formatDateDDMMYYYY
+};

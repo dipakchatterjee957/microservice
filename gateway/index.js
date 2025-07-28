@@ -15,8 +15,8 @@ app.use(cros())
 // Route to User Service
 app.use('/user', createProxyMiddleware({ target: 'http://localhost:8081', changeOrigin: true }));
 
-// Route to Product Service
-app.use('/product', createProxyMiddleware({ target: 'http://localhost:8082', changeOrigin: true }));
+// Route to baselineSurvey Service
+app.use('/baselineSurvey', createProxyMiddleware({ target: 'http://localhost:8082', changeOrigin: true }));
 
 app.get('/', (req, res) => {
     res.send('Gateway Service');

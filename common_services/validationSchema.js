@@ -2,7 +2,7 @@ import yup from 'yup';
 const phoneRegex = /^(?:(?:0|91)?[6789]\d{9})$/;
 const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@#$?!])[a-zA-Z\d@#$?!]{6,}$/i;
 
-module.exports.createUserSchema = yup.object({
+const createUserSchema = yup.object({
     body: yup.object({
         user_name: yup.string().min(3, "Minimum 3 letter required").required(),
         mobile_primary: yup
@@ -13,14 +13,14 @@ module.exports.createUserSchema = yup.object({
     })
 })
 
-module.exports.loginSchema = yup.object({
+const loginSchema = yup.object({
     body: yup.object({
         login_id: yup.string().required("Please enter login Id"),
         password: yup.string().required("Please enter password"),
     })
 })
 
-module.exports.resetSchema = yup.object({
+const resetSchema = yup.object({
     body: yup.object({
         newPassword: yup.string().required("Please enter password"),
         reenterPassword: yup
@@ -30,3 +30,9 @@ module.exports.resetSchema = yup.object({
             .required("Please enter password"),
     })
 })
+
+export default {
+    createUserSchema,
+    loginSchema,
+    resetSchema
+}

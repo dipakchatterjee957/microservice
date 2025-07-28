@@ -1,8 +1,8 @@
 import express from 'express';
-import userController from '../controller/user.controller.js';
-import { validateToken } from '../../../common_services/validateToen.js';
-const userRouter = express.Router();
+import baselineSurveyController from '../controller/baselineSurvey.controller.js';
+import validateToken from '../../../common_services/validateToen.js';
+const baselineSurveyRouter = express.Router();
 
-userRouter.get(`/getUserList`, validateToken, userController.getUserList);
+baselineSurveyRouter.get(`/getBaselineSurveyList`, validateToken, baselineSurveyController.getBaselineSurveyList);
 
-module.exports = userRouter;
+export default baselineSurveyRouter;

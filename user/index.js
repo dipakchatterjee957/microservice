@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cros())
 
-app.use(`/bflp/dev`, userRouter);
+app.use('/', userRouter);
 app.get('/', (req, res) => {
     res.send('User Service');
 });

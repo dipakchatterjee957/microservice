@@ -24,7 +24,6 @@ export default new class Usercontroller {
     };
 
     login = async (req, res) => {
-        console.log('Login request micro');
         try {
             const data = await userService.login(req.body);
             return utils.sendResponse(res, data, true);

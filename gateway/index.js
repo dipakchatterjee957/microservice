@@ -8,20 +8,18 @@ const PORT = process.env.PORT
 
 const app = express();
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 app.use(cors())
 
 // Route to User Service
-app.use('/bflp/dev/user', createProxyMiddleware({ target: 'http://localhost:8081', changeOrigin: true }));
+app.use('/bflp/dev/user', createProxyMiddleware({ target: 'http://localhost:8081/bflp/dev/user', changeOrigin: true }));
 
 // Route to baselineSurvey Service
-app.use('/bflp/dev/baselineSurvey', createProxyMiddleware({ target: 'http://localhost:8082', changeOrigin: true }));
+app.use('/bflp/dev', createProxyMiddleware({ target: 'http://localhost:8082/bflp/dev', changeOrigin: true }));
 
 app.get('/', (req, res) => {
     res.send('Gateway Service');
 });
 
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Gateway Server is running on http://localhost:${PORT}`);
 });

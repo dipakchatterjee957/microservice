@@ -36,7 +36,7 @@ const convertToDate = (date) => {
 const convertArrayDateField = (array, ...item) => {
     array.forEach(i => {
         for (let x = 0; x < item.length; x++) {
-            i[item[x]] = i[item[x]] ? this.convertToDate(i[item[x]]) : null;
+            i[item[x]] = i[item[x]] ? convertToDate(i[item[x]]) : null;
         }
     });
     // return array;
@@ -44,7 +44,7 @@ const convertArrayDateField = (array, ...item) => {
 const convertArrayDateTimeField = (array, ...item) => {
     array.forEach(i => {
         for (let x = 0; x < item.length; x++) {
-            i[item[x]] = i[item[x]] ? this.convertToDateTime(i[item[x]]) : null;
+            i[item[x]] = i[item[x]] ? convertToDateTime(i[item[x]]) : null;
         }
     });
     // return array;

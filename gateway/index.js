@@ -13,10 +13,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors())
 
 // Route to User Service
-app.use('/user', createProxyMiddleware({ target: 'http://localhost:8081', changeOrigin: true }));
+app.use('/bflp/dev/user', createProxyMiddleware({ target: 'http://localhost:8081', changeOrigin: true }));
 
 // Route to baselineSurvey Service
-app.use('/baselineSurvey', createProxyMiddleware({ target: 'http://localhost:8082', changeOrigin: true }));
+app.use('/bflp/dev/baselineSurvey', createProxyMiddleware({ target: 'http://localhost:8082', changeOrigin: true }));
 
 app.get('/', (req, res) => {
     res.send('Gateway Service');

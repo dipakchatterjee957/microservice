@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors())
 
-app.use('/', baselineSurveyRouter);
+app.use('/bflp/dev/baselineSurvey', baselineSurveyRouter);
 app.get('/', (req, res) => {
     res.send('BaselineSurvey Service');
 });
